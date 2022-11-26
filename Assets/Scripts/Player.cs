@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -14,9 +16,15 @@ public class Player : MonoBehaviour
     Vector3 velocity;
     Vector2 look;
 
+    public GameOverController gameovercontroller;
+    public GameObject gameover;
+
     void Awake()
     {
         characterController = GetComponent<CharacterController>();
+
+        gameover = GameObject.FindWithTag("Game Over");
+        gameovercontroller = gameover.GetComponent<GameOverController>();
     }
 
     void Start()
@@ -68,7 +76,7 @@ public class Player : MonoBehaviour
     {
         if (other.CompareTag("Enemy Weapon"))
         {
-            Debug.Log("cagaste");
+            gameovercontroller.ShowGameOver("¡MORISTE!");
         }
     }
 }
