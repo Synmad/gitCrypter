@@ -63,4 +63,12 @@ public class Player : MonoBehaviour
 
         characterController.Move((input * movementSpeed + velocity) * Time.deltaTime);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Enemy Weapon"))
+        {
+            Debug.Log("cagaste");
+        }
+    }
 }

@@ -8,6 +8,8 @@ public class SwordCollision : MonoBehaviour
     public EnemyController enemycontroller;
     public GameObject enemy;
 
+    public int attackDamage = 1;
+
     private void Awake()
     {
         enemy = GameObject.FindWithTag("Enemy");
@@ -18,8 +20,8 @@ public class SwordCollision : MonoBehaviour
     {
         if (other.tag == "Enemy" && swordcontroller.isAttacking)
         {
-            Debug.Log("Atacando a "+ other);
-            enemycontroller.TakeDamage(1);
+            Debug.Log("Attacking: "+ other);
+            enemycontroller.TakeDamage(attackDamage);
         }
         
     }
