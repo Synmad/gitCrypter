@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     [SerializeField] float mass = 1f;
     [SerializeField] Transform camaraTransform;
 
+    [SerializeField] int health = 3;
+
     CharacterController characterController;
     Vector3 velocity;
     Vector2 look;
@@ -75,6 +77,16 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Enemy Weapon"))
+        {
+            //gameovercontroller.ShowGameOver("¡MORISTE!");
+            //Time.timeScale = 0f;
+        }
+    }
+
+    public void TakeDamage (int damageAmount)
+    {
+        health -= damageAmount;
+        if (health <= 0f)
         {
             gameovercontroller.ShowGameOver("¡MORISTE!");
             Time.timeScale = 0f;

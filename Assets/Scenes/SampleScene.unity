@@ -217,6 +217,7 @@ MonoBehaviour:
   movementSpeed: 3
   mass: 1
   camaraTransform: {fileID: 963194228}
+  health: 3
   gameovercontroller: {fileID: 0}
   gameover: {fileID: 0}
 --- !u!4 &215808777
@@ -368,7 +369,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 0
+  m_BaseOffset: -0.01
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &250746386
@@ -399,8 +400,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.082574874, y: 0.13618332, z: 0.09770145}
-  m_Center: {x: -0.008712587, y: 0.064363606, z: 0.016192341}
+  m_Size: {x: 0.082574874, y: 0.13708167, z: 0.09770145}
+  m_Center: {x: -0.008712587, y: 0.06391444, z: 0.016192341}
 --- !u!54 &250746390
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -413,7 +414,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -1027,8 +1028,23 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 0.0369869, y: 0.026097586, z: 0.10452516}
-  m_Center: {x: -0.0005865768, y: -0.00069783855, z: 0.058262534}
+  m_Size: {x: 0.047143497, y: 0.043385297, z: 0.11996663}
+  m_Center: {x: -0.00091691397, y: -0.0037564903, z: 0.06598313}
+--- !u!114 &1104790909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1104790905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffcac2e9b87b4fb4097bc6b51ce8b8c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerscript: {fileID: 0}
+  player: {fileID: 0}
+  attackDamage: 1
 --- !u!1001 &1195807752
 PrefabInstance:
   m_ObjectHideFlags: 0

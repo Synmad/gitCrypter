@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class AttackStateController : StateMachineBehaviour
 {
@@ -15,7 +16,10 @@ public class AttackStateController : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.transform.LookAt(player);
+        Vector3 lookatplayer = player.position;
+        lookatplayer.y = animator.transform.position.y;
+
+        animator.transform.LookAt(lookatplayer);
         float distance = Vector3.Distance(player.position, animator.transform.position);
         if (distance > 3.5f)
             animator.SetBool("isAttacking", false);
