@@ -21,7 +21,6 @@ public class SwordController : MonoBehaviour
 
     public void SwordAttack()
     {
-        isAttacking = true;
         canAttack = false;
         Animator anim = Sword.GetComponent<Animator>();
         anim.SetTrigger("Attack");
@@ -38,6 +37,5 @@ public class SwordController : MonoBehaviour
     IEnumerator ResetAttack()
     {
         yield return new WaitForSeconds(1.0f);
-        isAttacking = false;
     }
 }
