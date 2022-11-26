@@ -8,7 +8,7 @@ public class GameOverController : MonoBehaviour
     public Text gameovertext;
     Player playerscript;
     public GameObject player;
-    [SerializeField] private GameObject gameoverpanel;
+    public GameObject gameoverpanel;
 
     public void Awake()
     {

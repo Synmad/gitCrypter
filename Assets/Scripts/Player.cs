@@ -77,6 +77,7 @@ public class Player : MonoBehaviour
         if (other.CompareTag("Enemy Weapon"))
         {
             gameovercontroller.ShowGameOver("¡MORISTE!");
+            Time.timeScale = 0f;
         }
     }
 }
