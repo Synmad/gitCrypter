@@ -6,13 +6,15 @@ using UnityEngine;
 public class PlayerInventoryController : MonoBehaviour
 {
     [SerializeField] bool hasKey;
+    [SerializeField] Collider doorcollider;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Key")
+        if (other.tag == "Key" && (Input.GetKeyDown(KeyCode.E)))
         {
+            Debug.Log("Agarrando llave");
             other.gameObject.SetActive(false);
-            hasKey = true;
+            doorcollider.enabled = true;
         }
     }
 }

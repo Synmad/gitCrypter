@@ -37,7 +37,6 @@ public class EnemyController : MonoBehaviour
     }
     void DropKey()
     {
-        Vector3 position = transform.position;
-        GameObject key = Instantiate(keyModel, position, Quaternion.identity);
+        GameObject key = Instantiate(keyModel, new Vector3 (transform.position.x, 0.8f, transform.position.z), Quaternion.identity);
     }
 }

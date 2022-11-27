@@ -74,16 +74,7 @@ public class Player : MonoBehaviour
         characterController.Move((input * movementSpeed + velocity) * Time.deltaTime);
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Enemy Weapon"))
-        {
-            //gameovercontroller.ShowGameOver("¡MORISTE!");
-            //Time.timeScale = 0f;
-        }
-    }
-
-    public void TakeDamage (int damageAmount)
+     public void TakeDamage (int damageAmount)
     {
         health -= damageAmount;
         if (health <= 0f)
