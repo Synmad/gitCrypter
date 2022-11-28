@@ -31,6 +31,7 @@ public class EnemyController : MonoBehaviour
         {
             animator.SetTrigger("die");
             GetComponent<Collider>().enabled = false;
+            GetComponent<Rigidbody>().isKinematic = true;
             //gameovercontroller.ShowGameOver("¡GANASTE!");
             //Time.timeScale = 0f;
             DropKey();
