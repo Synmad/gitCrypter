@@ -435,9 +435,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff7e8be6d98a2e5429c232e4e8919836, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 0
-  angle: 0
-  player: {fileID: 0}
+  radius: 8.25
+  angle: 86
+  player: {fileID: 215808775}
   targetMask:
     serializedVersion: 2
     m_Bits: 64
@@ -1803,7 +1803,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400078, guid: 6f61bc53c41ba664fa527d3386ecfd1e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 400078, guid: 6f61bc53c41ba664fa527d3386ecfd1e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1811,7 +1811,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400078, guid: 6f61bc53c41ba664fa527d3386ecfd1e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.27
+      value: 3.03
       objectReference: {fileID: 0}
     - target: {fileID: 400078, guid: 6f61bc53c41ba664fa527d3386ecfd1e, type: 3}
       propertyPath: m_LocalRotation.w

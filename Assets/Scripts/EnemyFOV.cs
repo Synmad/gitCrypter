@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class EnemyFOV : MonoBehaviour
 {
-    [SerializeField] float radius;
+    public float radius;
     [Range(0, 360)]
-    [SerializeField] float angle;
+    public float angle;
 
-    [SerializeField] GameObject player;
+    public GameObject player;
 
     [SerializeField] LayerMask targetMask;
     [SerializeField] LayerMask obstructionMask;
