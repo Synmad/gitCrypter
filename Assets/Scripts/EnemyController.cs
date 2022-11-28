@@ -8,6 +8,10 @@ public class EnemyController : MonoBehaviour
 
     [SerializeField] Animator animator;
 
+    NavMeshAgent navmeshagent;
+    public GameObject player;
+
+
     EnemyFOV enemyfov;
 
     public GameObject keyModel;
@@ -17,6 +21,9 @@ public class EnemyController : MonoBehaviour
 
     private void Awake()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
+        navmeshagent = GetComponent<NavMeshAgent>();
+
         gameover = GameObject.FindWithTag("Game Over");
         gameovercontroller = gameover.GetComponent<GameOverController>();
 
@@ -49,7 +56,15 @@ public class EnemyController : MonoBehaviour
     private void Update()
     {
         if (enemyfov.seeingPlayer)
+        {
+            navmeshagent.SetDestination(player.transform.position);
             animator.SetBool("isChasing", true);
-
+            navmeshagent.speed = 5.0f;
+        }
+        float distance = Vector3.Distance(player.transform.position, animator.transform.position);
+        if (distance > 3.5f)
+            animator.SetBool("isAttacking", false);
+        if (distance < 3.5f)
+            animator.SetBool("isAttacking", true);
     }
 }

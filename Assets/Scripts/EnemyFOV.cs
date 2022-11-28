@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyFOV : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class EnemyFOV : MonoBehaviour
     public float angle;
 
     public GameObject player;
+    NavMeshAgent navmeshagent;
 
     [SerializeField] LayerMask targetMask;
     [SerializeField] LayerMask obstructionMask;
@@ -18,9 +20,10 @@ public class EnemyFOV : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        navmeshagent = GetComponent<NavMeshAgent>();
         StartCoroutine(FOVRoutine());
     }
-    
+
     private IEnumerator FOVRoutine()
     {
         WaitForSeconds wait = new WaitForSeconds(0.2f);
@@ -47,6 +50,7 @@ public class EnemyFOV : MonoBehaviour
 
                 if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
                     seeingPlayer = true;
+
                 else
                     seeingPlayer = false;
             }

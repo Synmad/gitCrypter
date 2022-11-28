@@ -18,6 +18,7 @@ public class DoorController : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         if (Input.GetKeyDown(KeyCode.E))
+            Debug.Log("Abriendo puerta");
             gameovercontroller.ShowGameOver("¡Ganaste!");
             Time.timeScale = 0f;
             //hingeanimation.Play();

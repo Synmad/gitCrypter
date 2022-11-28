@@ -10,21 +10,21 @@ public class AttackStateController : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        //player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Vector3 lookatplayer = player.position;
-        lookatplayer.y = animator.transform.position.y;
+        //Vector3 lookatplayer = player.position;
+        //lookatplayer.y = animator.transform.position.y;
 
-        animator.transform.LookAt(lookatplayer);
-        float distance = Vector3.Distance(player.position, animator.transform.position);
-        if (distance > 3.5f)
-            animator.SetBool("isAttacking", false);
-        if (distance < 3.5f)
-            animator.SetBool("isAttacking", true);
+        //animator.transform.LookAt(lookatplayer);
+        //float distance = Vector3.Distance(player.position, animator.transform.position);
+        //if (distance > 3.5f)
+        //    animator.SetBool("isAttacking", false);
+        //if (distance < 3.5f)
+        //    animator.SetBool("isAttacking", true);
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

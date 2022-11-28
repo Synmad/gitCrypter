@@ -20,7 +20,7 @@ public class SwordCollision : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Enemy" && canDamage)
+        if (other.tag == "Enemy" && canDamage && swordcontroller.isAttacking)
         {
             Debug.Log("Attacking: " + other);
             enemycontroller.TakeDamage(attackDamage);

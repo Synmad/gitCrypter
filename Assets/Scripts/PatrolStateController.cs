@@ -26,32 +26,32 @@ public class PatrolStateController : StateMachineBehaviour
 
         navmeshagent.SetDestination(waypoints[Random.Range(0, waypoints.Count)].position);
 
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-        float distance = Vector3.Distance(player.position, animator.transform.position);
-        if (distance < chaseRange)
-            animator.SetBool("isChasing", true);
+        //player = GameObject.FindGameObjectWithTag("Player").transform;
+        //float distance = Vector3.Distance(player.position, animator.transform.position);
+        //if (distance < chaseRange)
+        //    animator.SetBool("isChasing", true);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (navmeshagent.remainingDistance <= navmeshagent.stoppingDistance)
-            navmeshagent.SetDestination(waypoints[Random.Range(0, waypoints.Count)].position);
-        stateTimer += Time.deltaTime;
-        if (stateTimer > 10)
-        {
-            animator.SetBool("isPatrolling", false);
-            stateTimer = 0;
+        //if (navmeshagent.remainingDistance <= navmeshagent.stoppingDistance)
+        //    navmeshagent.SetDestination(waypoints[Random.Range(0, waypoints.Count)].position);
+        //stateTimer += Time.deltaTime;
+        //if (stateTimer > 10)
+        //{
+        //    animator.SetBool("isPatrolling", false);
+        //    stateTimer = 0;
         }
             
 
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        navmeshagent.SetDestination(navmeshagent.transform.position);
-    }
+    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    //{
+    //    navmeshagent.SetDestination(navmeshagent.transform.position);
+    //}
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -64,4 +64,3 @@ public class PatrolStateController : StateMachineBehaviour
     //{
     //    // Implement code that sets up animation IK (inverse kinematics)
     //}
-}
