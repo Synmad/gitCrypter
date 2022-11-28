@@ -15,10 +15,10 @@ public class IdleStateController : StateMachineBehaviour
     {
         stateTimer = 0;
 
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-        float distance = Vector3.Distance(player.position, animator.transform.position);
-        if (distance < chaseRange)
-            animator.SetBool("isChasing", true);
+        //player = GameObject.FindGameObjectWithTag("Player").transform;
+        //float distance = Vector3.Distance(player.position, animator.transform.position);
+        //if (distance < chaseRange)
+            //animator.SetBool("isChasing", true);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

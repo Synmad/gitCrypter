@@ -5,7 +5,10 @@ using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
     [SerializeField] int health = 3;
+
     [SerializeField] Animator animator;
+
+    EnemyFOV enemyfov;
 
     public GameObject keyModel;
 
@@ -16,6 +19,8 @@ public class EnemyController : MonoBehaviour
     {
         gameover = GameObject.FindWithTag("Game Over");
         gameovercontroller = gameover.GetComponent<GameOverController>();
+
+        enemyfov = GetComponent<EnemyFOV>();
     }
 
     public void TakeDamage(int damageAmount)
@@ -38,5 +43,12 @@ public class EnemyController : MonoBehaviour
     void DropKey()
     {
         GameObject key = Instantiate(keyModel, new Vector3 (transform.position.x, 0.8f, transform.position.z), Quaternion.identity);
+    }
+
+    private void Update()
+    {
+        if (enemyfov.seeingPlayer)
+            animator.SetBool("isChasing", true);
+
     }
 }
