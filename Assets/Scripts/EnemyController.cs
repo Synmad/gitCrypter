@@ -62,9 +62,9 @@ public class EnemyController : MonoBehaviour
             navmeshagent.speed = 5.0f;
         }
         float distance = Vector3.Distance(player.transform.position, animator.transform.position);
-        if (distance > 3.5f)
-            animator.SetBool("isAttacking", false);
-        if (distance < 3.5f)
+        if (distance < 3.5f && enemyfov.seeingPlayer)
             animator.SetBool("isAttacking", true);
+        else
+            animator.SetBool("isAttacking", false);
     }
 }
