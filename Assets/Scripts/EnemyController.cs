@@ -64,7 +64,11 @@ public class EnemyController : MonoBehaviour
         float distance = Vector3.Distance(player.transform.position, animator.transform.position);
         if (distance < 3.5f && enemyfov.seeingPlayer)
             animator.SetBool("isAttacking", true);
-        else
+        if (enemyfov.seeingPlayer == false)
+        {
             animator.SetBool("isAttacking", false);
+            animator.SetBool("isChasing", false);
+        }
+            
     }
 }
