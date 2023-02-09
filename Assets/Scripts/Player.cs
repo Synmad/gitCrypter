@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     [SerializeField] Transform camaraTransform;
 
     [SerializeField] int health = 3;
+    [SerializeField] bool isAlive = true;
 
     CharacterController characterController;
     Vector3 velocity;
@@ -31,14 +32,14 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
     {
-        UpdateLook();
-        UpdateMovement();
-        UpdateGravity();
+            UpdateLook();
+            UpdateMovement();
+            UpdateGravity();
     }
 
     void UpdateGravity()
@@ -80,7 +81,7 @@ public class Player : MonoBehaviour
         if (health <= 0f)
         {
             gameovercontroller.ShowGameOver("¡MORISTE!");
-            Time.timeScale = 0f;
+            isAlive = false;
         }
     }
 }

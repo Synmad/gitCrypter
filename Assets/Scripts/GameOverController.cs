@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameOverController : MonoBehaviour
 {
@@ -18,7 +19,12 @@ public class GameOverController : MonoBehaviour
     }
     public void ShowGameOver (string victoryOrDefeat)
     {
-        gameovertext.gameObject.SetActive(true);
+        gameoverpanel.gameObject.SetActive(true);
         gameovertext.text = victoryOrDefeat;
+    }
+
+    public void MenuButton()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }
