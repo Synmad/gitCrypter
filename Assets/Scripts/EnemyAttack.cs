@@ -8,6 +8,8 @@ public class EnemyAttack : MonoBehaviour
     public Transform attackPoint;
     public LayerMask playerLayer;
 
+    public Animator animator;
+
     bool PlayerFound;
 
     public float damage = 1f;
@@ -24,6 +26,6 @@ public class EnemyAttack : MonoBehaviour
 
     void Attack()
     {
-
+        animator.SetBool("isAttacking", true);
     }
 }
