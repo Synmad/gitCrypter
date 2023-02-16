@@ -402,14 +402,21 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 250746381}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4fa757ae23e35c749a2f28174a9371f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
   animator: {fileID: 250746384}
-  player: {fileID: 0}
+  player: {fileID: 215808775}
+  playerPosition: {fileID: 215808777}
+  range: 1
+  attackPoint: {fileID: 1881746683}
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  damage: 1
   keyModel: {fileID: 357927435571176275, guid: 98d603af7645f8e4faad751c82e86654, type: 3}
   gameovercontroller: {fileID: 0}
   gameover: {fileID: 0}
@@ -464,39 +471,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   seeingPlayer: 0
---- !u!114 &250746392
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 250746381}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb53d82962b3724479b5bfaf33b63bd1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 215808777}
-  navmeshagent: {fileID: 250746385}
---- !u!114 &250746394
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 250746381}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f91beafd68e0b124a826fc687343a63e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  range: 1
-  attackPoint: {fileID: 1881746683}
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  animator: {fileID: 250746384}
-  damage: 1
 --- !u!4 &250746395 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400078, guid: 6f61bc53c41ba664fa527d3386ecfd1e, type: 3}

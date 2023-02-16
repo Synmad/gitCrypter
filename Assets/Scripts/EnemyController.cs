@@ -9,10 +9,14 @@ public class EnemyController : MonoBehaviour
     [SerializeField] Animator animator;
 
     NavMeshAgent navmeshagent;
-    public GameObject player;
+    [SerializeField] GameObject player;
+    [SerializeField] Transform playerPosition;
+    public float range = 1f;
 
-
-    EnemyFOV enemyfov;
+    public Transform attackPoint;
+    public LayerMask playerLayer;
+    bool playerFound;
+    public float damage = 1f;
 
     public GameObject keyModel;
 
@@ -26,8 +30,6 @@ public class EnemyController : MonoBehaviour
 
         gameover = GameObject.FindWithTag("Game Over");
         gameovercontroller = gameover.GetComponent<GameOverController>();
-
-        enemyfov = GetComponent<EnemyFOV>();
     }
 
     public void TakeDamage(int damageAmount)
@@ -55,20 +57,33 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
-        if (enemyfov.seeingPlayer)
+        navmeshagent.destination = playerPosition.position;
+
+       playerFound = Physics.CheckSphere(attackPoint.position, range, playerLayer);
+
+        if (playerFound)
         {
-            navmeshagent.SetDestination(player.transform.position);
-            animator.SetBool("isChasing", true);
-            navmeshagent.speed = 5.0f;
+            Attack();
         }
-        float distance = Vector3.Distance(player.transform.position, animator.transform.position);
-        if (distance < 3.5f && enemyfov.seeingPlayer)
-            animator.SetBool("isAttacking", true);
-        if (enemyfov.seeingPlayer == false)
-        {
-            animator.SetBool("isAttacking", false);
-            animator.SetBool("isChasing", false);
-        }
-            
+        //if (enemyfov.seeingPlayer)
+        //{
+        //    navmeshagent.SetDestination(player.transform.position);
+        //    animator.SetBool("isChasing", true);
+        //    navmeshagent.speed = 5.0f;
+        //}
+        //float distance = Vector3.Distance(player.transform.position, animator.transform.position);
+        //if (distance < 3.5f && enemyfov.seeingPlayer)
+        //    animator.SetBool("isAttacking", true);
+        //if (enemyfov.seeingPlayer == false)
+        //{
+        //    animator.SetBool("isAttacking", false);
+        //    animator.SetBool("isChasing", false);
+        //}
+
+    }
+
+    void Attack()
+    {
+        animator.SetBool("isAttacking", true);
     }
 }
