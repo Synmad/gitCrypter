@@ -65,6 +65,10 @@ public class EnemyController : MonoBehaviour
         {
             Attack();
         }
+        else
+        {
+            navmeshagent.isStopped = false;
+        }
         //if (enemyfov.seeingPlayer)
         //{
         //    navmeshagent.SetDestination(player.transform.position);
@@ -85,5 +89,6 @@ public class EnemyController : MonoBehaviour
     void Attack()
     {
         animator.SetBool("isAttacking", true);
+        navmeshagent.isStopped = true;
     }
 }
