@@ -68,6 +68,8 @@ public class EnemyController : MonoBehaviour
         else
         {
             navmeshagent.isStopped = false;
+            animator.SetBool("isAttacking", false);
+            navmeshagent.acceleration = 1f;
         }
         //if (enemyfov.seeingPlayer)
         //{
@@ -90,5 +92,6 @@ public class EnemyController : MonoBehaviour
     {
         animator.SetBool("isAttacking", true);
         navmeshagent.isStopped = true;
+        navmeshagent.acceleration = 0f;
     }
 }
