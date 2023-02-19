@@ -15,13 +15,14 @@ public class SwordCollision : MonoBehaviour
     private void Awake()
     {
         enemy = GameObject.FindWithTag("Enemy");
-        enemycontroller = enemy.GetComponent<EnemyController>();
+        //enemycontroller = enemy.GetComponent<EnemyController>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Enemy" && canDamage && swordcontroller.isAttacking)
         {
+            enemycontroller = other.GetComponent<EnemyController>();
             Debug.Log("Attacking: " + other);
             enemycontroller.TakeDamage(attackDamage);
             canDamage = false;

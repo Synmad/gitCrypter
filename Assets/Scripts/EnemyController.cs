@@ -32,6 +32,11 @@ public class EnemyController : MonoBehaviour
         gameovercontroller = gameover.GetComponent<GameOverController>();
     }
 
+    private void Start()
+    {
+        playerPosition = player.GetComponent<Transform>();
+    }
+
     public void TakeDamage(int damageAmount)
     {
         health -= damageAmount;
