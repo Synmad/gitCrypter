@@ -2013,6 +2013,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 215808775}
     - target: {fileID: 4223598140729649540, guid: 6aa9982715f206841ae58f408c841661, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4223598140729649540, guid: 6aa9982715f206841ae58f408c841661, type: 3}
       propertyPath: playerPosition
       value: 
       objectReference: {fileID: 215808777}

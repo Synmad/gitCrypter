@@ -23,6 +23,8 @@ public class EnemyController : MonoBehaviour
     public GameOverController gameovercontroller;
     public GameObject gameover;
 
+    private Vector3 distance = Vector3.zero;
+
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -62,9 +64,13 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
-        navmeshagent.destination = playerPosition.position;
+        float producto = Vector3.Dot(playerPosition.position.normalized, transform.position.normalized);
 
-       playerFound = Physics.CheckSphere(attackPoint.position, range, playerLayer);
+       float distance = Vector3.Distance(playerPosition.position, transform.position);
+
+       navmeshagent.destination = playerPosition.position;
+
+       playerFound = distance <= 3f;
 
         if (playerFound)
         {
@@ -74,7 +80,7 @@ public class EnemyController : MonoBehaviour
         {
             navmeshagent.isStopped = false;
             animator.SetBool("isAttacking", false);
-            navmeshagent.acceleration = 1f;
+            navmeshagent.acceleration = 5f;
         }
         //if (enemyfov.seeingPlayer)
         //{
@@ -98,5 +104,7 @@ public class EnemyController : MonoBehaviour
         animator.SetBool("isAttacking", true);
         navmeshagent.isStopped = true;
         navmeshagent.acceleration = 0f;
+        navmeshagent.speed = 0f;
+
     }
 }
