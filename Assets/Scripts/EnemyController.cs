@@ -15,7 +15,7 @@ public class EnemyController : MonoBehaviour
 
     public Transform attackPoint;
     public LayerMask playerLayer;
-    bool playerFound;
+    [SerializeField] bool playerFound;
     public float damage = 1f;
 
     public GameObject keyModel;
@@ -24,6 +24,8 @@ public class EnemyController : MonoBehaviour
     public GameObject gameover;
 
     private Vector3 distance = Vector3.zero;
+
+    [SerializeField] float angle;
 
     private void Awake()
     {
@@ -64,23 +66,42 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
-        float producto = Vector3.Dot(playerPosition.position.normalized, transform.position.normalized);
+        //float producto = Vector3.Dot(playerPosition.position.normalized, transform.position.normalized);
 
        float distance = Vector3.Distance(playerPosition.position, transform.position);
 
        navmeshagent.destination = playerPosition.position;
 
-       playerFound = distance <= 3f;
+       playerFound = distance <= 2f;
+
+       
 
         if (playerFound)
-        {
-            Attack();
+            {
+
+            Vector3 playerDirection = playerPosition.position - transform.position;
+            angle = Vector3.Angle(playerDirection, transform.forward);
+
+            if (angle <= 40.0f)
+            {
+                Attack();
+            }
+
+            else
+            {
+                
+            }
+            
+            // else { rotateTowardsPlayer, aumentar velocidad rotación }
+
         }
         else
         {
             navmeshagent.isStopped = false;
             animator.SetBool("isAttacking", false);
             navmeshagent.acceleration = 5f;
+            navmeshagent.speed = 3f;
+            navmeshagent.angularSpeed = 180f;
         }
         //if (enemyfov.seeingPlayer)
         //{
@@ -102,9 +123,10 @@ public class EnemyController : MonoBehaviour
     void Attack()
     {
         animator.SetBool("isAttacking", true);
-        navmeshagent.isStopped = true;
-        navmeshagent.acceleration = 0f;
+        navmeshagent.destination = this.transform.position;
+        navmeshagent.angularSpeed = 0f;
         navmeshagent.speed = 0f;
+        navmeshagent.acceleration = 0f;
 
     }
 }
