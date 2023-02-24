@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SwordCollision : MonoBehaviour
 {
+    [SerializeField] AudioSource hitSound;
     public SwordController swordcontroller;
     public EnemyController enemycontroller;
     public GameObject enemy;
@@ -24,6 +25,7 @@ public class SwordCollision : MonoBehaviour
         {
             enemycontroller = other.GetComponent<EnemyController>();
             Debug.Log("Attacking: " + other);
+            hitSound.Play();
             enemycontroller.TakeDamage(attackDamage);
             canDamage = false;
             StartCoroutine(RefreshDamage());

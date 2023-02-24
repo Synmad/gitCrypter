@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SwordController : MonoBehaviour
 {
+    [SerializeField] AudioSource swingSound;
     [SerializeField] GameObject Sword;
     [SerializeField] float attackCooldown = 1.0f;
     public bool isAttacking;
@@ -25,6 +26,7 @@ public class SwordController : MonoBehaviour
         canAttack = false;
         Animator anim = Sword.GetComponent<Animator>();
         anim.SetTrigger("Attack");
+        swingSound.Play();
         StartCoroutine(ResetAttackCooldown());
     }
 
