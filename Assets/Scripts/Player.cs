@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     [SerializeField] float mass = 1f;
     [SerializeField] Transform camaraTransform;
 
-    [SerializeField] int health = 3;
+    public int health = 3;
     [SerializeField] bool isAlive = true;
 
     CharacterController characterController;
