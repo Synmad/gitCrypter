@@ -80,16 +80,16 @@ public class EnemyController : MonoBehaviour
             {
 
             Vector3 playerDirection = playerPosition.position - transform.position;
-            angle = Vector3.Angle(playerDirection, transform.forward);
+            angle = Vector3.Angle(playerDirection, transform.forward * -1);
 
-            if (angle <= 40.0f)
+            if (angle >= 50.0f)
             {
                 Attack();
             }
 
             else
             {
-                
+                animator.SetBool("isAttacking", false);
             }
             
             // else { rotateTowardsPlayer, aumentar velocidad rotación }
