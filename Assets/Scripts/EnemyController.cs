@@ -15,10 +15,8 @@ public class EnemyController : MonoBehaviour
 
     public Transform attackPoint;
     public LayerMask playerLayer;
-    [SerializeField] bool playerFound;
+    [SerializeField] bool playerNear;
     public float damage = 1f;
-
-    public GameObject keyModel;
 
     public GameOverController gameovercontroller;
     public GameObject gameover;
@@ -52,27 +50,20 @@ public class EnemyController : MonoBehaviour
             GetComponent<Rigidbody>().isKinematic = true;
             //gameovercontroller.ShowGameOver("¡GANASTE!");
             //Time.timeScale = 0f;
-            DropKey();
         }
         else
         {
             animator.SetTrigger("hurt");
         }
     }
-    void DropKey()
-    {
-        GameObject key = Instantiate(keyModel, new Vector3 (transform.position.x, 0.8f, transform.position.z), Quaternion.identity);
-    }
 
     private void Update()
     {
-        //float producto = Vector3.Dot(playerPosition.position.normalized, transform.position.normalized);
-
        float distance = Vector3.Distance(playerPosition.position, transform.position);
 
        navmeshagent.destination = playerPosition.position;
 
-       playerFound = distance <= 2f;
+       playerNear = distance <= 2f;
 
        
         if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("AttackState"))
@@ -82,12 +73,10 @@ public class EnemyController : MonoBehaviour
             navmeshagent.speed = 0f;
             navmeshagent.acceleration = 0f;
             }
-
+         
+        if (playerNear)
+        {
             
-
-        if (playerFound)
-            {
-
             Vector3 playerDirection = playerPosition.position - transform.position;
             angle = Vector3.Angle(playerDirection, transform.forward * -1);
 
@@ -99,6 +88,9 @@ public class EnemyController : MonoBehaviour
             else
             {
                 animator.SetBool("isAttacking", false);
+                navmeshagent.acceleration = 5f;
+                navmeshagent.speed = 3f;
+                navmeshagent.angularSpeed = 180f;
             }
             
             // else { rotateTowardsPlayer, aumentar velocidad rotación }
@@ -132,7 +124,5 @@ public class EnemyController : MonoBehaviour
     void Attack()
     {
         animator.SetBool("isAttacking", true);
-
-
     }
 }
