@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-public class EnemyController : MonoBehaviour
+public class EnemyChase : MonoBehaviour
 {
-    [SerializeField] int health = 3;
-
     [SerializeField] Animator animator;
 
     NavMeshAgent navmeshagent;
@@ -37,24 +35,6 @@ public class EnemyController : MonoBehaviour
     private void Start()
     {
         playerPosition = player.GetComponent<Transform>();
-    }
-
-    public void TakeDamage(int damageAmount)
-    {
-        health -= damageAmount;
-
-        if (health <= 0)
-        {
-            animator.SetTrigger("die");
-            GetComponent<Collider>().enabled = false;
-            GetComponent<Rigidbody>().isKinematic = true;
-            //gameovercontroller.ShowGameOver("¡GANASTE!");
-            //Time.timeScale = 0f;
-        }
-        else
-        {
-            animator.SetTrigger("hurt");
-        }
     }
 
     private void Update()

@@ -6,7 +6,7 @@ public class SwordCollision : MonoBehaviour
 {
     [SerializeField] AudioSource hitSound;
     public SwordController swordcontroller;
-    public EnemyController enemycontroller;
+    public EnemyDeath enemydeath;
     public GameObject enemy;
     bool canDamage = true;
     float damageCooldown = 1.0f;
@@ -23,10 +23,10 @@ public class SwordCollision : MonoBehaviour
     {
         if (other.tag == "Enemy" && canDamage && swordcontroller.isAttacking)
         {
-            enemycontroller = other.GetComponent<EnemyController>();
+            enemydeath = other.GetComponent<EnemyDeath>();
             Debug.Log("Attacking: " + other);
             hitSound.Play();
-            enemycontroller.TakeDamage(attackDamage);
+            enemydeath.TakeDamage(attackDamage);
             canDamage = false;
             StartCoroutine(RefreshDamage());
         }
