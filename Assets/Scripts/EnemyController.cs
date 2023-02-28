@@ -75,6 +75,15 @@ public class EnemyController : MonoBehaviour
        playerFound = distance <= 2f;
 
        
+        if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("AttackState"))
+            {
+            navmeshagent.destination = this.transform.position;
+            navmeshagent.angularSpeed = 0f;
+            navmeshagent.speed = 0f;
+            navmeshagent.acceleration = 0f;
+            }
+
+            
 
         if (playerFound)
             {
@@ -123,10 +132,7 @@ public class EnemyController : MonoBehaviour
     void Attack()
     {
         animator.SetBool("isAttacking", true);
-        navmeshagent.destination = this.transform.position;
-        navmeshagent.angularSpeed = 0f;
-        navmeshagent.speed = 0f;
-        navmeshagent.acceleration = 0f;
+
 
     }
 }
