@@ -45,7 +45,11 @@ public class EnemyChase : MonoBehaviour
 
        playerNear = distance <= 2f;
 
-       
+       if (navmeshagent.speed > 0f)
+        {
+            animator.SetBool("isChasing", true);
+        }
+
         if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("AttackState"))
             {
             navmeshagent.destination = this.transform.position;
@@ -60,7 +64,7 @@ public class EnemyChase : MonoBehaviour
             Vector3 playerDirection = playerPosition.position - transform.position;
             angle = Vector3.Angle(playerDirection, transform.forward * -1);
 
-            if (angle >= 50.0f)
+            if (angle >= 130.0f)
             {
                 Attack();
             }
