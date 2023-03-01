@@ -338,9 +338,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseSensitivity: 3
-  movementSpeed: 4
   mass: 1
   camaraTransform: {fileID: 963194228}
+  movementSpeed: 4
   health: 3
   isAlive: 1
   gameovercontroller: {fileID: 0}
@@ -391,8 +391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df42c85823bd19f4989050c120e01d44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasKey: 0
-  doorcollider: {fileID: 1930997835}
+  player: {fileID: 215808776}
 --- !u!54 &215808780
 Rigidbody:
   m_ObjectHideFlags: 0

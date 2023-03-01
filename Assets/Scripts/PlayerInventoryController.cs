@@ -5,16 +5,24 @@ using UnityEngine;
 
 public class PlayerInventoryController : MonoBehaviour
 {
-    [SerializeField] bool hasKey;
-    [SerializeField] Collider doorcollider;
+    [SerializeField] Player player;
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Key" && (Input.GetKeyDown(KeyCode.E)))
+        if (other.tag == "Item")
         {
-            Debug.Log("Agarrando llave");
+            Debug.Log("Agarrando item");
             other.gameObject.SetActive(false);
-            doorcollider.enabled = true;
+
+            if (other.name == "Health")
+            {
+                player.Heal(1);
+            }
+
+            if (other.name == "Speed")
+            {
+                player.movementSpeed += 3;
+            }
         }
     }
 }

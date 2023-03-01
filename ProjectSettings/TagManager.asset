@@ -8,7 +8,7 @@ TagManager:
   - Waypoints
   - Enemy Weapon
   - Game Over
-  - Key
+  - Item
   layers:
   - Default
   - TransparentFX

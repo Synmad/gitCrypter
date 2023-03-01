@@ -8,11 +8,12 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     [SerializeField] float mouseSensitivity = 3f;
-    [SerializeField] float movementSpeed = 5f;
     [SerializeField] float mass = 1f;
     [SerializeField] Transform camaraTransform;
 
-    public int health = 3;
+    public float movementSpeed = 5f;
+    public int curHealth = 3;
+    public int maxHealth = 3;
     [SerializeField] bool isAlive = true;
 
     CharacterController characterController;
@@ -77,11 +78,19 @@ public class Player : MonoBehaviour
 
      public void TakeDamage (int damageAmount)
     {
-        health -= damageAmount;
-        if (health <= 0f)
+        curHealth -= damageAmount;
+        if (curHealth <= 0f)
         {
             gameovercontroller.ShowGameOver("¡MORISTE!");
             isAlive = false;
+        }
+    }
+
+    public void Heal (int healAmount)
+    {
+        if (maxHealth > curHealth)
+        {
+            curHealth += (healAmount);
         }
     }
 }
