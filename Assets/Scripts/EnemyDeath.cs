@@ -29,7 +29,10 @@ public class EnemyDeath : MonoBehaviour
     void DropItem()
     {
         int randomIndex = Random.Range(0, drops.Length);
+        Vector3 spawnPosition = new Vector3(transform.position.x, 0.8f, transform.position.z);
 
-        Instantiate(drops[randomIndex], this.transform.position, Quaternion.identity);
+        Instantiate(drops[randomIndex], spawnPosition, Quaternion.identity);
+
+        
     }
 }
