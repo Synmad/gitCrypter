@@ -14,14 +14,14 @@ public class PlayerInventoryController : MonoBehaviour
             Debug.Log("Agarrando item");
             other.gameObject.SetActive(false);
 
-            if (other.name == "Health")
+            if (other.name.Contains("Health"))
             {
                 player.Heal(1);
             }
 
-            if (other.name == "Speed")
+            if (other.name.Contains("Speed"))
             {
-                player.movementSpeed += 3;
+                player.movementSpeed += 1;
             }
         }
     }
