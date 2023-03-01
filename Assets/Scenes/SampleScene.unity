@@ -303,6 +303,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   animator: {fileID: 195549153}
+  drops:
+  - {fileID: 357927435571176275, guid: 98d603af7645f8e4faad751c82e86654, type: 3}
 --- !u!1 &215808775
 GameObject:
   m_ObjectHideFlags: 0
@@ -2158,7 +2160,7 @@ GameObject:
   - component: {fileID: 1913859195}
   - component: {fileID: 1913859194}
   m_Layer: 0
-  m_Name: Spanwer
+  m_Name: Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

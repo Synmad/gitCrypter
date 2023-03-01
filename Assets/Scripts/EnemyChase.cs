@@ -50,7 +50,7 @@ public class EnemyChase : MonoBehaviour
             animator.SetBool("isChasing", true);
         }
 
-        if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("AttackState"))
+        if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("AttackState") || (this.animator.GetCurrentAnimatorStateInfo(0).IsName("Hurt")))
             {
             navmeshagent.destination = this.transform.position;
             navmeshagent.angularSpeed = 0f;
@@ -60,7 +60,6 @@ public class EnemyChase : MonoBehaviour
          
         if (playerNear)
         {
-            
             Vector3 playerDirection = playerPosition.position - transform.position;
             angle = Vector3.Angle(playerDirection, transform.forward * -1);
 
@@ -68,7 +67,6 @@ public class EnemyChase : MonoBehaviour
             {
                 Attack();
             }
-
             else
             {
                 animator.SetBool("isAttacking", false);
@@ -76,9 +74,6 @@ public class EnemyChase : MonoBehaviour
                 navmeshagent.speed = 3f;
                 navmeshagent.angularSpeed = 180f;
             }
-            
-            // else { rotateTowardsPlayer, aumentar velocidad rotación }
-
         }
         else
         {
@@ -88,21 +83,6 @@ public class EnemyChase : MonoBehaviour
             navmeshagent.speed = 3f;
             navmeshagent.angularSpeed = 180f;
         }
-        //if (enemyfov.seeingPlayer)
-        //{
-        //    navmeshagent.SetDestination(player.transform.position);
-        //    animator.SetBool("isChasing", true);
-        //    navmeshagent.speed = 5.0f;
-        //}
-        //float distance = Vector3.Distance(player.transform.position, animator.transform.position);
-        //if (distance < 3.5f && enemyfov.seeingPlayer)
-        //    animator.SetBool("isAttacking", true);
-        //if (enemyfov.seeingPlayer == false)
-        //{
-        //    animator.SetBool("isAttacking", false);
-        //    animator.SetBool("isChasing", false);
-        //}
-
     }
 
     void Attack()

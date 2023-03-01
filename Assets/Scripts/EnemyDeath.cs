@@ -6,6 +6,7 @@ public class EnemyDeath : MonoBehaviour
 {
     [SerializeField] int health = 3;
     [SerializeField] Animator animator;
+    [SerializeField] GameObject[] drops;
 
     public void TakeDamage(int damageAmount)
     {
@@ -17,10 +18,18 @@ public class EnemyDeath : MonoBehaviour
             GetComponent<Collider>().enabled = false;
             GetComponent<Rigidbody>().isKinematic = true;
             GetComponent<EnemyChase>().enabled = false;
+            DropItem();
         }
         else
         {
             animator.SetTrigger("hurt");
         }
+    }
+
+    void DropItem()
+    {
+        int randomIndex = Random.Range(0, drops.Length);
+
+        Instantiate(drops[randomIndex], this.transform.position, Quaternion.identity);
     }
 }
