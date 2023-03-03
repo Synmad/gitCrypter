@@ -7,7 +7,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] GameObject enemy;
     [SerializeField] int xPosition;
     [SerializeField] int zPosition;
-    [SerializeField] int enemyCount;
+    public int enemyCount;
 
 
     void Start()

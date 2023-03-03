@@ -8,15 +8,20 @@ public class PlayerUI : MonoBehaviour
 {
 
     [SerializeField] Player player;
-    [SerializeField] TextMeshProUGUI healthText;
+    public TextMeshProUGUI healthText;
+    [SerializeField] TextMeshProUGUI scoreText;
+
+    public int score = 0;
 
     private void Awake()
     {
-        
+        scoreText.text = "0";
+        healthText.text = player.curHealth.ToString() + " HP";
     }
 
-    void Update()
+    public void ScoreUpdate(int scoreIncrease)
     {
-        healthText.text = player.curHealth.ToString() + " HP";
+        score += scoreIncrease;
+        scoreText.text = score.ToString();
     }
 }

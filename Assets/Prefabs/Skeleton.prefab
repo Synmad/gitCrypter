@@ -1238,6 +1238,8 @@ MonoBehaviour:
   drops:
   - {fileID: 357927435571176275, guid: 98d603af7645f8e4faad751c82e86654, type: 3}
   - {fileID: 357927435571176275, guid: 543fe6998410bf5409cecf16b282fe64, type: 3}
+  playerui: {fileID: 0}
+  enemyspawner: {fileID: 0}
 --- !u!1 &4223598141959957874
 GameObject:
   m_ObjectHideFlags: 0

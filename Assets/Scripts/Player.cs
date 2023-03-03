@@ -23,6 +23,8 @@ public class Player : MonoBehaviour
     public GameOverController gameovercontroller;
     public GameObject gameover;
 
+    [SerializeField] PlayerUI playerui;
+
     void Awake()
     {
         characterController = GetComponent<CharacterController>();
@@ -84,6 +86,7 @@ public class Player : MonoBehaviour
             gameovercontroller.ShowGameOver("¡MORISTE!");
             isAlive = false;
         }
+        playerui.healthText.text = curHealth.ToString() + " HP";
     }
 
     public void Heal (int healAmount)

@@ -7,6 +7,17 @@ public class EnemyDeath : MonoBehaviour
     [SerializeField] int health = 3;
     [SerializeField] Animator animator;
     [SerializeField] GameObject[] drops;
+    [SerializeField] PlayerUI playerui;
+    [SerializeField] EnemySpawner enemyspawner;
+
+    private void Awake()
+    {
+        GameObject canvas = GameObject.Find("Canvas");
+        playerui = canvas.GetComponent<PlayerUI>();
+
+        GameObject gamemanager = GameObject.Find("Game Manager");
+        enemyspawner = gamemanager.GetComponent<EnemySpawner>();
+    }
 
     public void TakeDamage(int damageAmount)
     {
@@ -19,6 +30,8 @@ public class EnemyDeath : MonoBehaviour
             GetComponent<Rigidbody>().isKinematic = true;
             GetComponent<EnemyChase>().enabled = false;
             DropItem();
+            playerui.ScoreUpdate(100);
+            enemyspawner.enemyCount--;
         }
         else
         {

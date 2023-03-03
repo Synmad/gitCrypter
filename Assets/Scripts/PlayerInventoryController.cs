@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerInventoryController : MonoBehaviour
 {
     [SerializeField] Player player;
+    [SerializeField] PlayerUI playerui;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -22,6 +23,12 @@ public class PlayerInventoryController : MonoBehaviour
             if (other.name.Contains("Speed"))
             {
                 player.movementSpeed += 1;
+            }
+
+            if (other.name.Contains("Points"))
+            {
+                Debug.Log("pija bolas");
+                playerui.ScoreUpdate(100);
             }
         }
     }
