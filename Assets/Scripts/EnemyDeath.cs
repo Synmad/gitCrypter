@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyDeath : MonoBehaviour
 {
@@ -29,9 +30,11 @@ public class EnemyDeath : MonoBehaviour
             GetComponent<Collider>().enabled = false;
             GetComponent<Rigidbody>().isKinematic = true;
             GetComponent<EnemyChase>().enabled = false;
+            GetComponent<NavMeshAgent>().enabled = false;
             DropItem();
             playerui.ScoreUpdate(100);
             enemyspawner.enemyCount--;
+            Destroy(gameObject, 6);
         }
         else
         {
