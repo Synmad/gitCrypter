@@ -8,8 +8,13 @@ public class PlayerInventoryController : MonoBehaviour
     [SerializeField] Player player;
     [SerializeField] PlayerUI playerui;
 
-    private void OnTriggerEnter(Collider other)
-    {
+    [SerializeField] AudioSource healthSound;
+    [SerializeField] AudioSource speedSound;
+    [SerializeField] AudioSource pointsSound;
+
+    private void OnTriggerEnter (Collider other)
+    { 
+
         if (other.tag == "Item")
         {
             Debug.Log("Agarrando item");
@@ -18,16 +23,18 @@ public class PlayerInventoryController : MonoBehaviour
             if (other.name.Contains("Health"))
             {
                 player.Heal(1);
+                healthSound.Play();
             }
 
             if (other.name.Contains("Speed"))
             {
+                speedSound.Play();
                 player.movementSpeed += 1;
             }
 
             if (other.name.Contains("Points"))
             {
-                Debug.Log("pija bolas");
+                pointsSound.Play();
                 playerui.ScoreUpdate(100);
             }
         }

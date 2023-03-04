@@ -11,6 +11,8 @@ public class EnemyDeath : MonoBehaviour
     [SerializeField] PlayerUI playerui;
     [SerializeField] EnemySpawner enemyspawner;
 
+    
+
     private void Awake()
     {
         GameObject canvas = GameObject.Find("Canvas");

@@ -25,6 +25,8 @@ public class Player : MonoBehaviour
 
     [SerializeField] PlayerUI playerui;
 
+    [SerializeField] AudioSource hurtSound;
+
     void Awake()
     {
         characterController = GetComponent<CharacterController>();
@@ -81,6 +83,7 @@ public class Player : MonoBehaviour
      public void TakeDamage (int damageAmount)
     {
         curHealth -= damageAmount;
+        hurtSound.Play();
         if (curHealth <= 0f)
         {
             gameovercontroller.ShowGameOver("¡MORISTE!");
@@ -94,6 +97,7 @@ public class Player : MonoBehaviour
         if (maxHealth > curHealth)
         {
             curHealth += (healAmount);
+            playerui.HealthUpdate();
         }
     }
 }

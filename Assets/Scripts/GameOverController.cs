@@ -6,14 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class GameOverController : MonoBehaviour
 {
-    public Text gameovertext;
+    [SerializeField] Text gameovertext;
     Player playerscript;
-    public GameObject player;
-    public GameObject gameoverpanel;
+    GameObject player;
+    [SerializeField] GameObject gameoverpanel;
 
     public void Awake()
     {
-        gameovertext = gameoverpanel.GetComponent<Text>();
         player = GameObject.FindWithTag("Player");
         playerscript = player.GetComponent<Player>();
     }

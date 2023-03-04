@@ -24,4 +24,9 @@ public class PlayerUI : MonoBehaviour
         score += scoreIncrease;
         scoreText.text = score.ToString();
     }
+
+    public void HealthUpdate()
+    {
+        healthText.text = player.curHealth.ToString() + " HP";
+    }
 }
