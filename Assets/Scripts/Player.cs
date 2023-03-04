@@ -11,21 +11,28 @@ public class Player : MonoBehaviour
     [SerializeField] float mass = 1f;
     [SerializeField] Transform camaraTransform;
 
-    public float movementSpeed = 5f;
+    public float movementSpeed;
+    public int speedBoosts = 0;
     public int curHealth = 3;
     public int maxHealth = 3;
     [SerializeField] bool isAlive = true;
+    [SerializeField] float slow = -3;
+    [SerializeField] Animator sword;
 
     CharacterController characterController;
     Vector3 velocity;
     Vector2 look;
 
-    public GameOverController gameovercontroller;
-    public GameObject gameover;
+    GameOverController gameovercontroller;
+    GameObject gameover;
+
+    [SerializeField] SwordCollision swordcollision;
 
     [SerializeField] PlayerUI playerui;
 
     [SerializeField] AudioSource hurtSound;
+
+    
 
     void Awake()
     {
@@ -78,6 +85,17 @@ public class Player : MonoBehaviour
         input = Vector3.ClampMagnitude(input, 1f);
 
         characterController.Move((input * movementSpeed + velocity) * Time.deltaTime);
+
+        if (swordcollision.attacking)
+        {
+            movementSpeed += speedBoosts;
+            movementSpeed /= 5.8f;
+        }
+        else
+        {
+            movementSpeed = 5;
+            movementSpeed += speedBoosts; 
+        }
     }
 
      public void TakeDamage (int damageAmount)

@@ -38,10 +38,6 @@ public class EnemyDeath : MonoBehaviour
             enemyspawner.enemyCount--;
             Destroy(gameObject, 6);
         }
-        else
-        {
-            animator.SetTrigger("hurt");
-        }
     }
 
     void DropItem()

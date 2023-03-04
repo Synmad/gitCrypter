@@ -179,10 +179,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitSound: {fileID: 160656467}
+  player: {fileID: 215808776}
   swordcontroller: {fileID: 1586860187}
   enemydeath: {fileID: 0}
   enemy: {fileID: 0}
+  animator: {fileID: 160656460}
   attackDamage: 1
+  attacking: 0
 --- !u!82 &160656467
 AudioSource:
   m_ObjectHideFlags: 0
@@ -319,11 +322,13 @@ MonoBehaviour:
   mass: 1
   camaraTransform: {fileID: 963194228}
   movementSpeed: 4
+  speedBoosts: 0
   curHealth: 3
   maxHealth: 3
   isAlive: 1
-  gameovercontroller: {fileID: 0}
-  gameover: {fileID: 0}
+  slow: -3
+  sword: {fileID: 0}
+  swordcollision: {fileID: 160656464}
   playerui: {fileID: 734634310}
   hurtSound: {fileID: 215808781}
 --- !u!4 &215808777
@@ -2491,7 +2496,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swingSound: {fileID: 1586860188}
-  Sword: {fileID: 160656456}
+  sword: {fileID: 160656456}
   attackCooldown: 1
   isAttacking: 0
 --- !u!82 &1586860188
@@ -2671,7 +2676,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1913859194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2687,6 +2692,8 @@ MonoBehaviour:
   enemy: {fileID: 4223598141959957872, guid: 6aa9982715f206841ae58f408c841661, type: 3}
   xPosition: 0
   zPosition: 0
+  spawnTime: 0
+  difficulty: 0.0001
   enemyCount: 0
 --- !u!4 &1913859195
 Transform:
@@ -2990,14 +2997,6 @@ PrefabInstance:
       propertyPath: enemyspawner
       value: 
       objectReference: {fileID: 1913859194}
-    - target: {fileID: 195549155, guid: 6aa9982715f206841ae58f408c841661, type: 3}
-      propertyPath: drops.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 195549155, guid: 6aa9982715f206841ae58f408c841661, type: 3}
-      propertyPath: drops.Array.data[2]
-      value: 
-      objectReference: {fileID: 357927435571176275, guid: 6ddc45155600b46439cd5c88ad138c21, type: 3}
     - target: {fileID: 4223598141959729488, guid: 6aa9982715f206841ae58f408c841661, type: 3}
       propertyPath: m_RootOrder
       value: 1

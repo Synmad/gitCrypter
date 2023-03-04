@@ -5,13 +5,17 @@ using UnityEngine;
 public class SwordCollision : MonoBehaviour
 {
     [SerializeField] AudioSource hitSound;
+    [SerializeField] Player player;
     public SwordController swordcontroller;
     public EnemyDeath enemydeath;
     public GameObject enemy;
     bool canDamage = true;
     float damageCooldown = 1.0f;
+    public Animator animator;
 
     public int attackDamage = 1;
+
+    public bool attacking;
 
     private void Awake()
     {
@@ -35,5 +39,17 @@ public class SwordCollision : MonoBehaviour
     {
         yield return new WaitForSeconds(damageCooldown);
         canDamage = true;
+    }
+
+    private void Update()
+    {
+        if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("SwordAttack"))
+        {
+            attacking = true;
+        }
+        else
+        {
+            attacking = false;
+        }
     }
 }
