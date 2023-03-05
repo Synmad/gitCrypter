@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     [SerializeField] Transform camaraTransform;
 
     public float movementSpeed;
-    public int speedBoosts = 0;
+    public float speedMultiplier = 0;
     public int curHealth = 3;
     public int maxHealth = 3;
     [SerializeField] bool isAlive = true;
@@ -70,6 +70,15 @@ public class Player : MonoBehaviour
 
         camaraTransform.localRotation = Quaternion.Euler(-look.y, 0, 0);
         transform.localRotation = Quaternion.Euler(0, look.x, 0);
+
+        if (swordcollision.attacking)
+        {
+            mouseSensitivity = 0.5f;
+        }
+        else
+        {
+            mouseSensitivity = 3f;
+        }
     }
 
     void UpdateMovement()
@@ -88,13 +97,12 @@ public class Player : MonoBehaviour
 
         if (swordcollision.attacking)
         {
-            movementSpeed += speedBoosts;
             movementSpeed /= 5.8f;
         }
         else
         {
             movementSpeed = 2.5f;
-            movementSpeed += speedBoosts; 
+            movementSpeed += speedMultiplier; 
         }
     }
 
@@ -104,8 +112,7 @@ public class Player : MonoBehaviour
         hurtSound.Play();
         if (curHealth <= 0f)
         {
-            gameovercontroller.ShowGameOver("¡MORISTE!");
-            isAlive = false;
+            gameovercontroller.GameOver();
         }
         playerui.healthText.text = curHealth.ToString() + " HP";
     }

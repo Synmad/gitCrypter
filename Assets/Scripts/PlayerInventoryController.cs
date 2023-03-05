@@ -7,6 +7,7 @@ public class PlayerInventoryController : MonoBehaviour
 {
     [SerializeField] Player player;
     [SerializeField] PlayerUI playerui;
+    [SerializeField] Light playerlight;
 
     [SerializeField] AudioSource healthSound;
     [SerializeField] AudioSource speedSound;
@@ -29,13 +30,14 @@ public class PlayerInventoryController : MonoBehaviour
             if (other.name.Contains("Speed"))
             {
                 speedSound.Play();
-                player.speedBoosts += 1;
+                player.speedMultiplier += 0.8f;
             }
 
             if (other.name.Contains("Points"))
             {
                 pointsSound.Play();
                 playerui.ScoreUpdate(100);
+                playerlight.range += 1;
             }
         }
     }
