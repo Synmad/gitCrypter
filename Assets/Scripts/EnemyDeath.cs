@@ -10,8 +10,7 @@ public class EnemyDeath : MonoBehaviour
     [SerializeField] GameObject[] drops;
     [SerializeField] PlayerUI playerui;
     [SerializeField] EnemySpawner enemyspawner;
-
-    
+    [SerializeField] DamageFlash damageflash;
 
     private void Awake()
     {
@@ -20,11 +19,14 @@ public class EnemyDeath : MonoBehaviour
 
         GameObject gamemanager = GameObject.Find("Game Manager");
         enemyspawner = gamemanager.GetComponent<EnemySpawner>();
+
+        damageflash = GetComponentInChildren<DamageFlash>();
     }
 
     public void TakeDamage(int damageAmount)
     {
         health -= damageAmount;
+        damageflash.DamageFlashStart();
 
         if (health <= 0)
         {
@@ -39,6 +41,8 @@ public class EnemyDeath : MonoBehaviour
             Destroy(gameObject, 6);
         }
     }
+
+    
 
     void DropItem()
     {
