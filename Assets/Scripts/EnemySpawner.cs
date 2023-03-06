@@ -12,7 +12,7 @@ public class EnemySpawner : MonoBehaviour
 
     public int enemyCount;
 
-    [SerializeField] Transform[] spawnPoints;
+    public Transform[] spawnPoints;
 
     private void Awake()
     {

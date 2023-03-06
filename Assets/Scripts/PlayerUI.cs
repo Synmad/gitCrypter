@@ -13,10 +13,11 @@ public class PlayerUI : MonoBehaviour
 
     [SerializeField] SwordCollision swordcollision;
 
-    public int score = 0;
+    public static int score = 0;
 
     private void Awake()
     {
+        score = 0;
         scoreText.text = "0";
         healthText.text = player.curHealth.ToString() + " HP";
     }

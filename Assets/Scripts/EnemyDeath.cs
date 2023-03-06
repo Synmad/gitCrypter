@@ -11,6 +11,8 @@ public class EnemyDeath : MonoBehaviour
     [SerializeField] PlayerUI playerui;
     [SerializeField] EnemySpawner enemyspawner;
     [SerializeField] DamageFlash damageflash;
+    [SerializeField] AudioSource deathSound;
+    [SerializeField] AudioSource presenceSound;
 
     private void Awake()
     {
@@ -31,11 +33,12 @@ public class EnemyDeath : MonoBehaviour
         if (health <= 0)
         {
             animator.SetTrigger("die");
+            deathSound.Play();
             GetComponent<Collider>().enabled = false;
             GetComponent<Rigidbody>().isKinematic = true;
             GetComponent<EnemyChase>().enabled = false;
             GetComponent<NavMeshAgent>().enabled = false;
-            GetComponent<AudioSource>().enabled = false;
+            presenceSound.enabled = false;
             DropItem();
             playerui.ScoreUpdate(100);
             enemyspawner.enemyCount--;
