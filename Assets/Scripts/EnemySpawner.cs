@@ -5,12 +5,10 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] GameObject enemy;
-    [SerializeField] int xPosition;
-    [SerializeField] int zPosition;
     [SerializeField] float spawnTime;
-    float minSpawnTime = 0f;
-    float middleSpawnTime = 4f;
-    [SerializeField] float difficulty = 1f;
+    float minSpawnTime = 2f;
+    float middleSpawnTime = 5f;
+    float difficulty = 0.5f;
 
     public int enemyCount;
 
@@ -18,7 +16,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Awake()
     {
-        spawnTime = 10;
+        spawnTime = 8.5f;
     }
 
     void Start()
@@ -30,31 +28,26 @@ public class EnemySpawner : MonoBehaviour
     {
         
 
-        while (enemyCount < 10)
+        while (enemyCount < 6)
         {
             int spawnPointIndex = Random.Range(0, spawnPoints.Length);
-            //xPosition = Random.Range(-17, 17);
-            //zPosition = Random.Range(9, 19);
-            //Instantiate(enemy, new Vector3(xPosition, 0, zPosition), Quaternion.identity);
             Instantiate(enemy, spawnPoints[spawnPointIndex].position, Quaternion.identity);
             enemyCount += 1;
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(spawnTime);
         }
     }
 
     private void Update()
     {
-        //if (spawnTime > middleSpawnTime)
-        //{
-        //    spawnTime -= difficulty;
-        //    difficulty += 0.00001f * Time.deltaTime;
-        //}
+        if (spawnTime > middleSpawnTime)
+        {
+            spawnTime -= difficulty * Time.deltaTime;
+        }
 
-        //if (spawnTime < middleSpawnTime && spawnTime > minSpawnTime)
-        //{
-        //    spawnTime -= difficulty;
-        //    difficulty += 0.000001f * Time.deltaTime;
-        //}
+        if (spawnTime <= middleSpawnTime && spawnTime > minSpawnTime)
+        {
+            spawnTime -= (difficulty / 10) * Time.deltaTime;
+        }
 
     }
 }

@@ -30,7 +30,7 @@ public class PlayerInventoryController : MonoBehaviour
             if (other.name.Contains("Speed"))
             {
                 speedSound.Play();
-                player.speedMultiplier += 0.8f;
+                player.speedMultiplier += 1f;
             }
 
             if (other.name.Contains("Points"))
