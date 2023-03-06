@@ -11,6 +11,7 @@ public class FallDeath : MonoBehaviour
         if (other.tag == "Player")
         {
             gameovercontroller.GameOver();
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 }

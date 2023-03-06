@@ -35,6 +35,7 @@ public class EnemyDeath : MonoBehaviour
             GetComponent<Rigidbody>().isKinematic = true;
             GetComponent<EnemyChase>().enabled = false;
             GetComponent<NavMeshAgent>().enabled = false;
+            GetComponent<AudioSource>().enabled = false;
             DropItem();
             playerui.ScoreUpdate(100);
             enemyspawner.enemyCount--;
